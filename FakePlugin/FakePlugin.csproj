@@ -53,7 +53,7 @@
     <None Include="plugin.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ipaddress.png" />
+    <Content Include="logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
