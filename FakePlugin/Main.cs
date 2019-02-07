@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using Wox.Plugin;
 
 namespace FakePlugin
@@ -19,11 +20,12 @@ namespace FakePlugin
             {
                 Result result = new Result();
                 result.Title = query.ActionKeyword;
-                result.SubTitle = GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
+                result.SubTitle = "Copy to clipboard: " + GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
                 results.Add(result);
                 result.Action = context =>
                 {
-                    return false;  //false lukker ikke wox, true lukker wox
+                    Clipboard.SetText(result.SubTitle.Substring(19));
+                    return true;  //false lukker ikke wox, true lukker wox
                 };
             }
 
