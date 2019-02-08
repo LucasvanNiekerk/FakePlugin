@@ -46,13 +46,13 @@ namespace FakePlugin
             switch (RN)
             {
                 case 0:
-                    return "Maglegårdsvej 2 2";
+                    return "Maglegrdsvej 2 2";
                 case 1:
-                    return "Maglegårdsvej 2 3";
+                    return "Maglegrdsvej 2 3";
                 case 2:
-                    return "Maglegårdsvej 2 4";
+                    return "Maglegrdsvej 2 4";
                 default:
-                    return "Maglegårdsvej 2 6";
+                    return "Maglegrdsvej 2 6";
             }
         }
 
