@@ -16,7 +16,7 @@ namespace FakePlugin
             //Tager vores query og opdeler den i en array af strings udefra mellemrum.
             string[] splitQuery = query.RawQuery.Split(' ');
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 25; i++)
             {
                 Result result = new Result();
                 result.Title = query.ActionKeyword;
@@ -28,7 +28,7 @@ namespace FakePlugin
                     return true;  //false lukker ikke wox, true lukker wox
                 };
             }
-
+             
 
             return results;
         }
@@ -38,7 +38,7 @@ namespace FakePlugin
             
         }
 
-        private string GeneratePassword(int length, string specialCharsString, string upperCaseString)
+        public string GeneratePassword(int length, string specialCharsString, string upperCaseString)
         {
             string availableChars = "";
             string passWord = "";
