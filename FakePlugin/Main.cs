@@ -27,8 +27,9 @@ namespace FakePlugin
                 result.Action = context =>
                 {
                     Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here
+                    string sound = SoundEffects();
                     string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
-                    player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\Maglegårdsvej 2 3.wav";
+                    player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\" + sound + ".wav";
 
                     player.Play();
                     return true;  //false lukker ikke wox, true lukker wox
@@ -37,6 +38,22 @@ namespace FakePlugin
             
 
             return results;
+        }
+
+        public string SoundEffects()
+        {
+            int RN = random.Next(4);
+            switch (RN)
+            {
+                case 0:
+                    return "Maglegårdsvej 2 2";
+                case 1:
+                    return "Maglegårdsvej 2 3";
+                case 2:
+                    return "Maglegårdsvej 2 4";
+                default:
+                    return "Maglegårdsvej 2 6";
+            }
         }
 
         public void Init(PluginInitContext context)
