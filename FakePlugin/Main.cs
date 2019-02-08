@@ -28,7 +28,7 @@ namespace FakePlugin
                 {
                     Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here
                     string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
-                    player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\Scream1.wav";
+                    player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\Maglegårdsvej 2 3.wav";
 
                     player.Play();
                     return true;  //false lukker ikke wox, true lukker wox

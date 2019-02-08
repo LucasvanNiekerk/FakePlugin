@@ -54,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.png" />
+    <Content Include="Maglegårdsvej 2 2.wav" />
+    <Content Include="Maglegårdsvej 2 3.wav" />
+    <Content Include="Maglegårdsvej 2 4.wav" />
+    <Content Include="Maglegårdsvej 2 6.wav" />
     <Content Include="Scream1.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
