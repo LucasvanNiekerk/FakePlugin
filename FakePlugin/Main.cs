@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Windows;
 using Wox.Plugin;
 
@@ -8,6 +9,7 @@ namespace FakePlugin
     public class Main : IPlugin
     {
         Random random = new Random();
+        SoundPlayer player = new SoundPlayer();
         private int _actionKeywordLength = 5; //med mellemrum efter
 
         public List<Result> Query(Query query)
@@ -24,11 +26,15 @@ namespace FakePlugin
                 results.Add(result);
                 result.Action = context =>
                 {
-                    Clipboard.SetText(result.SubTitle.Substring(19));
+                    Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here
+                    string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
+                    player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\Scream1.wav";
+
+                    player.PlaySync();
                     return true;  //false lukker ikke wox, true lukker wox
                 };
             }
-
+            
 
             return results;
         }

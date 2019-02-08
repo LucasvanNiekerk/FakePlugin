@@ -1,12 +1,12 @@
 {
-  "ID": "E2D2C23B084D41D1B6F60E78BBBC79D62CAH9",
-  "ActionKeyword": "pass",
-  "Name": "PassWordGen",
-  "Description": "Shows your internal and external IP address",
-  "Author": "MDLJ",
-  "Version": "1.0.0",
-  "Language": "csharp",
-  "Website": "",
-  "ExecuteFileName": "FakePlugin.dll",
-  "IcoPath": "logo.png"
+    "ID": "E2D2C23B084D41D1B6F60E78BBBC79D62CAH2",
+    "ActionKeyword": "pass",
+    "Name": "PassWordGen",
+    "Description": "Shows your internal and external IP address",
+    "Author": "MDLJ",
+    "Version": "1.0.0",
+    "Language": "csharp",
+    "Website": "",
+    "ExecuteFileName": "FakePlugin.dll",
+    "IcoPath": "Images\\logo.png"
 }
