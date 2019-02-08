@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.png" />
+    <Content Include="Scream1.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
