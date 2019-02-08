@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakePlugin", "FakePlugin\FakePlugin.csproj", "{2DE0B1D2-2887-42B1-9149-208EB3FECA0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakePluginTests", "FakePluginTests\FakePluginTests.csproj", "{38DC5A87-B3AF-490A-B5B8-61B5DF946EF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2DE0B1D2-2887-42B1-9149-208EB3FECA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DE0B1D2-2887-42B1-9149-208EB3FECA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DE0B1D2-2887-42B1-9149-208EB3FECA0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DC5A87-B3AF-490A-B5B8-61B5DF946EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DC5A87-B3AF-490A-B5B8-61B5DF946EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DC5A87-B3AF-490A-B5B8-61B5DF946EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DC5A87-B3AF-490A-B5B8-61B5DF946EF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
