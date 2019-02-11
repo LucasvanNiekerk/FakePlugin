@@ -14,67 +14,75 @@ namespace FakePlugin
         SoundPlayer player = new SoundPlayer();
         private int _actionKeywordLength = 5; //med mellemrum efter
 
+        //private PluginInitContext context;
+
         public List<Result> Query(Query query)
         {
             List<Result> results = new List<Result>();
             //Tager vores query og opdeler den i en array af strings udefra mellemrum.
             string[] splitQuery = query.RawQuery.Split(' ');
 
-            Result result = new Result();
+            Result result;
 
             if (string.IsNullOrEmpty(query.Search))
             {
-                results.Add(ResultForListCommandAutoComplete());
-                results.Add(ResultForInstallCommandAutoComplete());
-                results.Add(ResultForUninstallCommandAutoComplete());
+                results.Add(ResultsYesYes(query));
+                results.Add(ResultsYesNo(query));
+                results.Add(ResultsNoYes(query));
                 return results;
             }
 
             for (int i = 0; i < 25; i++)
             {
-                result = new Result();
+                result = new Result()
+                {
+
+                };
                 result.Title = query.ActionKeyword;
                 result.SubTitle = "Copy to clipboard: " + GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
                 result.IcoPath = "Images\\logo.png";
-                results.Add(result);
                 result.Action = context =>
                 {
                     Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here
                     string sound = SoundEffects();
                     string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
                     player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\" + sound + ".wav";
-
                     player.Play();
                     return true;  //false lukker ikke wox, true lukker wox
                 };
+                results.Add(result);
             }
             
             return results;
         }
 
-        private Result ResultForListCommandAutoComplete()
+        private Result ResultsYesYes(Query query)
         {
             string title = "PasswordLength(int) yes yes";
-            string subtitle = "list password of given length";
-            return ResultForCommand(title, subtitle);
+            string subtitle = "list password of given length with special characters and uppercase";
+            string command = "8 yes yes";
+            return ResultForCommand(query, command, title, subtitle);
         }
 
-        private Result ResultForInstallCommandAutoComplete()
+        private Result ResultsYesNo(Query query)
         {
             string title = "PasswordLength(int) yes no";
-            string subtitle = "list password of given length";
-            return ResultForCommand(title, subtitle);
+            string subtitle = "list password of given length with special characters";
+            string command = "8 yes no";
+            return ResultForCommand(query, command, title, subtitle);
         }
 
-        private Result ResultForUninstallCommandAutoComplete()
+        private Result ResultsNoYes(Query query)
         {
             string title = "PasswordLength(int) no yes";
-            string subtitle = "list password of given length";
-            return ResultForCommand(title, subtitle);
+            string subtitle = "list password of given length with uppercase";
+            string command = "8 no yes";
+            return ResultForCommand(query, command, title, subtitle);
         }
 
-        private Result ResultForCommand(string title, string subtitle)
+        private Result ResultForCommand(Query query, string command, string title, string subtitle)
         {
+            //const string seperater = Plugin.Query.TermSeperater;
             var result = new Result
             {
                 Title = title,
@@ -82,6 +90,7 @@ namespace FakePlugin
                 SubTitle = subtitle,
                 Action = e =>
                 {
+                    //context.API.ChangeQuery($"{query.ActionKeyword}{seperater}{command}{seperater}");
                     return false;
                 }
             };
@@ -90,8 +99,8 @@ namespace FakePlugin
 
         public string SoundEffects()
         {
-            int RN = random.Next(4);
-            switch (RN)
+            int randomNumber = random.Next(4);
+            switch (randomNumber)
             {
                 case 0:
                     return "Maglegrdsvej 2 2";
@@ -132,7 +141,7 @@ namespace FakePlugin
 
         //public Control CreateSettingPanel()
         //{
-        //    return new View2();
+        //    return new UserControl1();
         //}
     }
 }

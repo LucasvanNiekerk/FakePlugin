@@ -31,8 +31,6 @@ namespace FakePlugin.Tests
         [TestMethod()]
         public void QueryTest()
         {
-            
-            Assert.
         }
     }
 }
