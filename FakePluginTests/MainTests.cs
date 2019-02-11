@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FakePlugin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FakePlugin.Tests
 {
@@ -31,6 +25,18 @@ namespace FakePlugin.Tests
         [TestMethod()]
         public void QueryTest()
         {
+        }
+
+        [TestMethod()]
+        public void SoundEffectsTest()
+        {
+            Assert.IsNotNull(main.SoundEffects());
+        }
+
+        [TestMethod()]
+        public void ResultForCommandTest()
+        {
+            
         }
     }
 }

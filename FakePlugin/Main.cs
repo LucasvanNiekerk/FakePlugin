@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Media;
 using System.Windows;
-using System.Windows.Controls;
-using Wox.Infrastructure.UserSettings;
 using Wox.Plugin;
 
 namespace FakePlugin
@@ -34,19 +32,17 @@ namespace FakePlugin
 
             for (int i = 0; i < 25; i++)
             {
-                result = new Result()
-                {
-
-                };
+                result = new Result();
                 result.Title = query.ActionKeyword;
                 result.SubTitle = "Copy to clipboard: " + GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
                 result.IcoPath = "Images\\logo.png";
                 result.Action = context =>
                 {
-                    Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here
+                    Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here and didn't do shit!
                     string sound = SoundEffects();
                     string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
                     player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\" + sound + ".wav";
+                    AutoClosingMessageBox.Show("Copied to clipboard", "You're welcome", 1000);
                     player.Play();
                     return true;  //false lukker ikke wox, true lukker wox
                 };
@@ -56,7 +52,7 @@ namespace FakePlugin
             return results;
         }
 
-        private Result ResultsYesYes(Query query)
+        public Result ResultsYesYes(Query query)
         {
             string title = "PasswordLength(int) yes yes";
             string subtitle = "list password of given length with special characters and uppercase";
@@ -80,7 +76,7 @@ namespace FakePlugin
             return ResultForCommand(query, command, title, subtitle);
         }
 
-        private Result ResultForCommand(Query query, string command, string title, string subtitle)
+        public Result ResultForCommand(Query query, string command, string title, string subtitle)
         {
             //const string seperater = Plugin.Query.TermSeperater;
             var result = new Result
