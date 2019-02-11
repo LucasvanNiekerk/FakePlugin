@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Media;
 using System.Windows;
+using System.Windows.Controls;
+using Wox.Infrastructure.UserSettings;
 using Wox.Plugin;
 
 namespace FakePlugin
 {
-    public class Main : IPlugin
+    public class Main : IPlugin//, ISettingProvider
     {
         Random random = new Random();
         SoundPlayer player = new SoundPlayer();
@@ -18,11 +20,22 @@ namespace FakePlugin
             //Tager vores query og opdeler den i en array af strings udefra mellemrum.
             string[] splitQuery = query.RawQuery.Split(' ');
 
+            Result result = new Result();
+
+            if (string.IsNullOrEmpty(query.Search))
+            {
+                results.Add(ResultForListCommandAutoComplete());
+                results.Add(ResultForInstallCommandAutoComplete());
+                results.Add(ResultForUninstallCommandAutoComplete());
+                return results;
+            }
+
             for (int i = 0; i < 25; i++)
             {
-                Result result = new Result();
+                result = new Result();
                 result.Title = query.ActionKeyword;
                 result.SubTitle = "Copy to clipboard: " + GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
+                result.IcoPath = "Images\\logo.png";
                 results.Add(result);
                 result.Action = context =>
                 {
@@ -36,8 +49,43 @@ namespace FakePlugin
                 };
             }
             
-
             return results;
+        }
+
+        private Result ResultForListCommandAutoComplete()
+        {
+            string title = "PasswordLength(int) yes yes";
+            string subtitle = "list password of given length";
+            return ResultForCommand(title, subtitle);
+        }
+
+        private Result ResultForInstallCommandAutoComplete()
+        {
+            string title = "PasswordLength(int) yes no";
+            string subtitle = "list password of given length";
+            return ResultForCommand(title, subtitle);
+        }
+
+        private Result ResultForUninstallCommandAutoComplete()
+        {
+            string title = "PasswordLength(int) no yes";
+            string subtitle = "list password of given length";
+            return ResultForCommand(title, subtitle);
+        }
+
+        private Result ResultForCommand(string title, string subtitle)
+        {
+            var result = new Result
+            {
+                Title = title,
+                IcoPath = "Images\\logo.png",
+                SubTitle = subtitle,
+                Action = e =>
+                {
+                    return false;
+                }
+            };
+            return result;
         }
 
         public string SoundEffects()
@@ -81,5 +129,10 @@ namespace FakePlugin
             }
             return passWord;
         }
+
+        //public Control CreateSettingPanel()
+        //{
+        //    return new View2();
+        //}
     }
 }
