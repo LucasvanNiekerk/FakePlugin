@@ -36,14 +36,14 @@ namespace FakePlugin
                 result.Title = query.ActionKeyword;
                 result.SubTitle = "Copy to clipboard: " + GeneratePassword(Convert.ToInt16(splitQuery[1]), splitQuery[2], splitQuery[3]);
                 result.IcoPath = "Images\\logo.png";
-                result.Action = context =>
+                result.Action = context => 
                 {
                     Clipboard.SetText(result.SubTitle.Substring(19)); //Lucas was here and didn't do shit!
                     string sound = SoundEffects();
                     string[] username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\');
                     player.SoundLocation = @"C:\Users\" + username[1] + @"\AppData\Roaming\Wox\Plugins\pass\Sounds\" + sound + ".wav";
-                    AutoClosingMessageBox.Show("Copied to clipboard", "You're welcome", 1000);
                     player.Play();
+                    AutoClosingMessageBox.Show("Copied to clipboard", "You're welcome", 1000);
                     return true;  //false lukker ikke wox, true lukker wox
                 };
                 results.Add(result);
